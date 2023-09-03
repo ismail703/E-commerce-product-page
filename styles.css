@@ -240,7 +240,7 @@ header .cart .show-cart {
 @media (max-width: 784px) {
     header {
         border-bottom: none;
-        padding-inline: 1.1rem;
+        padding: 1.4rem 1.2rem;
     }
     header nav {
         position: absolute;
@@ -315,6 +315,9 @@ header .cart .show-cart {
 /* .product-container .product-images {
 
 } */
+.product-images .main-image {
+    position: relative;
+}
 .product-images .main-image .next-btn,
 .product-images .main-image .prev-btn {
     padding: .6rem;
@@ -322,13 +325,14 @@ header .cart .show-cart {
     border-radius: 50%;
     position: absolute; 
     z-index: 1;
-    top: 31%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .product-images .main-image .next-btn {
-    right: 15px;
+    right: 20px;
 }
 .product-images .main-image .prev-btn {
-    left: 15px;
+    left: 20px;
 }
 .product-images .secondary-images {
     display: grid;
