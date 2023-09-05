@@ -336,13 +336,12 @@ header .cart .show-cart {
 }
 .product-images .main-image .main {
     display: none;
-    height: 470px;
-    width: 100%;
+    /* height: 470px;
+    width: 100%; */
 }
 .product-images .secondary-images {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
 }
 .product-images .secondary-images .secondary {
     border-radius: 12px;
@@ -365,7 +364,7 @@ header .cart .show-cart {
 }
 
 /* Responsive */
-@media (min-width: 764px) {
+@media (min-width: 743px) {
     .product-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -376,7 +375,8 @@ header .cart .show-cart {
         display: none;
     }
     .product-images .secondary-images {
-        margin-top: 30px;
+        margin-top: 20px;
+        gap: 20px;
     }
     .product-images .secondary-images .secondary {
         display: block;
@@ -384,6 +384,7 @@ header .cart .show-cart {
     }
     .product-images .main-image .main {
         display: block;
+        min-height: 380px;
         border-radius: 12px;
     }
     .product-images .main-image .next-btn,
@@ -391,7 +392,17 @@ header .cart .show-cart {
         display: none;
     }
 }
-@media (max-width: 764px) {
+@media (min-width: 992px) {
+    .product-images .main-image .main {
+        height: 460px;
+        width: 100%;
+    }
+    .product-images .secondary-images {
+        margin-top: 30px;
+        gap: 30px;
+    }
+}
+@media (max-width: 743px) {
     .product-images .slider-image {
         display: block;
         position: relative;
@@ -480,6 +491,21 @@ header .cart .show-cart {
 .btn-container .add-chart img {
     margin-right: 15px;
 }
+
+/* Responsive */
+@media (max-width: 992px) {
+    .product-container .product-content {
+        padding: 2rem 1.2rem;
+    }
+    .product-container .product-content h1 {
+        font-size: 2.25rem;
+    }
+}
+@media (max-width: 848px) {
+    .product-content .add-chart {
+        width: 9rem;
+    }
+}
 @media (max-width: 764px) {
     .product-container .product-content {
         padding: 2rem 1.2rem;
@@ -503,9 +529,11 @@ header .cart .show-cart {
     }
     .product-content .add-chart {
         padding: .975rem 1rem;
+        width: 100%;
         margin-left: 0;
     }
 }
+
 
 
 
