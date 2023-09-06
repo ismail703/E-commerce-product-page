@@ -193,8 +193,8 @@ header .cart .show-cart {
 }
 .cart .cart-product {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
     width: 100%;
 }
 .cart .cart-product p {
