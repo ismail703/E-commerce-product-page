@@ -226,6 +226,9 @@ header .cart .show-cart {
     margin-top: 20px;
     font-weight: 500;
 }
+.cart-content .show-btn {
+    display: block;
+}
 /* Responsive */
 @media (max-width: 1075px) {
     header .cart .cart-content {
@@ -344,8 +347,8 @@ header .cart .show-cart {
     grid-template-columns: repeat(4, 1fr);
 }
 .product-images .secondary-images .secondary {
-    border-radius: 12px;
     display: none;
+    border-radius: 12px;
     transition: var(--transition);
 }
 .product-images .secondary-images .secondary img {
@@ -364,7 +367,7 @@ header .cart .show-cart {
 }
 
 /* Responsive */
-@media (min-width: 743px) {
+@media (min-width: 764px) {
     .product-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -394,7 +397,7 @@ header .cart .show-cart {
 }
 @media (min-width: 992px) {
     .product-images .main-image .main {
-        height: 460px;
+        height: 450px;
         width: 100%;
     }
     .product-images .secondary-images {
@@ -402,7 +405,7 @@ header .cart .show-cart {
         gap: 30px;
     }
 }
-@media (max-width: 743px) {
+@media (max-width: 764px) {
     .product-images .slider-image {
         display: block;
         position: relative;
@@ -435,16 +438,16 @@ header .cart .show-cart {
 }
 .product-content .txt {
     margin: 40px 0 20px;
-    line-height: 1.2;
+    line-height: 1.4;
 }
-.product-content .price .new-price {
+.product-content .price-container .price {
     color: #000;
     display: flex;
     align-items: center;
     font-weight: 700;
     font-size: 21px;
 }
-.product-content .price .new-price .discount {
+.product-content .price-container .price .discount {
     display: block;
     padding: 1px 4px;
     background: #ffdfb3;
@@ -454,7 +457,7 @@ header .cart .show-cart {
     font-size: 14px;
     margin-left: 20px;
 }
-.product-content .price .old-price {
+.product-content .price-container .old-price {
     color: var(--clr-grayish-blue);
     margin-top: 10px;
     text-decoration: line-through;
@@ -516,7 +519,7 @@ header .cart .show-cart {
     .product-container .product-content .txt {
         line-height: 1.5;
     }
-    .product-content .price {
+    .product-content .price-container {
         display: flex;
         justify-content: space-between;
     }
