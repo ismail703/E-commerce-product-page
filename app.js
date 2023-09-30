@@ -30,7 +30,6 @@ const slideImg = document.querySelectorAll(".slider-image img");
 const mainImg = document.querySelector(".main");
 const secondaryImgs = document.querySelectorAll(".secondary");
 
-
 slideImg.forEach((img, index) => {
     img.style.left = `${index * 100}%`;
 });
@@ -66,6 +65,7 @@ const addChart = document.querySelector(".add-chart");
 const myValue = document.querySelector(".num");
 const box = document.querySelector(".box");
 const checkoutBtn = document.querySelector(".checkout-btn");
+const numCartProduct = document.querySelector(".num-product");
 
 
 // select product number
@@ -114,11 +114,9 @@ addChart.addEventListener('click', () => {
             <span class="total-price"> $${(newPrice*value).toFixed(2)}</span>
           </p>
         </div>
-        <img
-          class="delete-icon"
-          src="images/icon-delete.svg"
-          alt="Delete icon"
-        />
+        <button class="delete-icon icon-btn">
+           <span class="material-symbols-outlined">delete</span>
+        </button>
       </div>`;
       box.innerHTML = result;
       
@@ -128,10 +126,44 @@ addChart.addEventListener('click', () => {
       del.addEventListener('click', function () {
         box.innerHTML = `<p class="empty">Your carte is empty</p>`;
         checkoutBtn.classList.remove("show-btn");
+        numCartProduct.classList.remove("show-num-product");
       });
-    }
-})
 
+      // add number of product to cart icon 
+      numCartProduct.innerHTML = value;
+      numCartProduct.classList.add("show-num-product");
+    }
+});
+
+// ************** Modal **************
+const modal = document.querySelector(".modal");
+const closeModal = document.querySelector(".close-modal");
+const modalImg = document.querySelector(".main-modal img");
+const nextImg = document.querySelector(".modal .prev-btn");
+const prevImg = document.querySelector(".modal .next-btn");
+const modalImages = document.querySelectorAll(".modal-images img");
+const modalImagesContainer = document.querySelector(".modal-images");
+const secondary = document.querySelectorAll(".secondary img");
+
+const images = [
+    "images/image-product-1.jpg",
+    "images/image-product-2.jpg",
+    "images/image-product-3.jpg",
+    "images/image-product-4.jpg",
+];
+
+console.log(prevImg);
+console.log(nextImg);
+
+mainImg.addEventListener('click', function (e) {
+    modal.classList.add("open");
+    openModal(e.currentTarget);
+});
+
+
+closeModal.addEventListener('click', function () {
+    modal.classList.remove("open");
+});
 
 // ************** Functions **************
 function carousel() {
@@ -146,6 +178,98 @@ function carousel() {
     });
 }
 
+function setMainImage(selectedImage) {
+    modalImg.src =  selectedImage.src;
+}
+function openModal(selectedImage) {
+    setMainImage(selectedImage);
+
+    modalImages.forEach(img => {
+        img.classList.remove("selected");
+
+        img.addEventListener('click', () => {
+            modalImages.forEach(img => {
+                img.classList.remove("selected");
+            });
+
+            img.classList.add("selected");
+            modalImg.src =  images[img.dataset.id];
+        });
+    });
+
+    secondary.forEach(img => {
+        if(img.parentElement.classList.contains("active")) {
+            modalImages[img.dataset.id].classList.add("selected");
+        }
+    });
+
+    nextImg.addEventListener('click', showNextImage);
+    prevImg.addEventListener('click', showPrevImage);
+}
+
+function showNextImage() {
+    let pos;
+    let i;
+
+    
+    console.log("next");
+    modalImages.forEach((img, index) => {
+        if(img.classList.contains("selected")) {
+            i = img.dataset.id;
+            if (index == 3 && i == 3) {
+                pos = 0;
+                i = 0;
+            } else {
+                pos = index + 1;
+                i++;
+            }
+        }
+    });
+    
+    console.log(pos);
+    console.log(i);
+    modalImg.src = images[i];
+    modalImages.forEach(img => {
+        img.classList.remove("selected");
+    });
+    modalImages[pos].classList.add('selected');
+}
+
+function showPrevImage() {
+    let pos;
+    let i;
+    
+    console.log("prev");
+    modalImages.forEach((img, index) => {
+        if(img.classList.contains("selected")) {
+            i = img.dataset.id;
+            if (index == 0 && i == 0) {
+                pos = 3;
+                i = 3;
+            } else {
+                pos = index - 1;
+                i--;
+            }
+        }
+    });
+    
+    console.log(pos);
+    console.log(i);
+    modalImg.src = images[i];
+    modalImages.forEach(img => {
+        img.classList.remove("selected");
+    });
+    modalImages[pos].classList.add('selected');
+}
 
 
-console.log(slideImg);
+
+
+
+
+
+
+
+
+
+
